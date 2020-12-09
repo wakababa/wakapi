@@ -7,9 +7,7 @@
     "create-wakapi":"./index.js"
   },
   "scripts": {
-    "test": "node test.js",
-    "api": "node ./generate-api/index.js",
-    "start": "nodemon --delay 2.5 server"
+    "test": "node test.js"
   },
   "keywords": [],
   "author": "wakababa",
