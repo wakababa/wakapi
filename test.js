@@ -1,4 +1,13 @@
-var fs = require('fs')
-const { deleteFolder } = require('./util')
+const createApi = require("./generate-api");
 
-deleteFolder("user")
+
+
+createApi({
+    apiname:"world",
+    prop:{
+        name:"String",
+        number:"Number",
+        age:"Number"
+    },
+    url:"mongodb+srv://waka:waka@cluster0.jtleo.mongodb.net/test1"
+})

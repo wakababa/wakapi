@@ -1,4 +1,5 @@
-
+const connectiontemplate = () => {
+  return `
     var mongoose = require("mongoose");
     const connectDb = async ({ url }) => {
     await mongoose.connect(
@@ -14,4 +15,6 @@
     };
 
     module.exports = connectDb;
-    
+    `;
+};
+module.exports =  connectiontemplate

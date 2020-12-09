@@ -1,7 +1,7 @@
 {
-  "name": "db",
+  "name": "wakapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Api Creater",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -10,7 +10,7 @@
     "start": "nodemon --delay 2.5 server"
   },
   "keywords": [],
-  "author": "",
+  "author": "wakababa",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",

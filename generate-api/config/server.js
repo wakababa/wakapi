@@ -1,10 +1,11 @@
 var fs = require('fs')
-const serverTemplate = () => {
+const serverTemplate = (url) => {
    
  const result = fs.readFileSync('config.json','utf-8',(res)=>{
       return res
    })
    const data = JSON.parse(result)
+   let urls = JSON.stringify(url)
   return `
     var express = require("express");
     var mongoose = require("mongoose");
@@ -23,7 +24,7 @@ const serverTemplate = () => {
     }
     var {doPlural,deletefromArray} = require('./util')
     connectDb({
-    url: "mongodb+srv://waka:waka@cluster0.jtleo.mongodb.net/test1",
+    url: ${urls},
     });
     app.use(cors());
     app.get("/apinames", (req, res) => {

@@ -9,7 +9,8 @@
     var createApi = require("./generate-api/index");
     var fs = require('fs')
 
-    var product = require("./api/product/controller/index");
+    var car = require("./api/car/controller/index");
+var world = require("./api/world/controller/index");
     var {doPlural,deletefromArray} = require('./util')
     connectDb({
     url: "mongodb+srv://waka:waka@cluster0.jtleo.mongodb.net/test1",
@@ -47,6 +48,7 @@
       });
    
       
-     app.use("/products", jsonParser, product);
+     app.use("/cars", jsonParser, car);
+ app.use("/worlds", jsonParser, world);
     app.listen(5000);
         
