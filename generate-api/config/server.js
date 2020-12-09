@@ -14,7 +14,7 @@ const serverTemplate = (url) => {
     var connectDb = require("./connection/connection");
     const app = express();
     var jsonParser = bodyParser.json();
-    var createApi = require("./generate-api/index");
+    var createApi = require("wakapi/generate-api/index");
     var fs = require('fs')
 
     ${
@@ -22,7 +22,7 @@ const serverTemplate = (url) => {
             `var ${item} = require("./api/${item}/controller/index");`
         )).join('\n')
     }
-    var {doPlural,deletefromArray} = require('./util')
+    var { doPlural, deletefromArray } = require("wakapi/util");
     connectDb({
     url: ${urls},
     });
