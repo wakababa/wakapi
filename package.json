@@ -1,8 +1,11 @@
 {
   "name": "wakapi",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Api Creater",
   "main": "index.js",
+  "bin": {
+    "create-wakapi":"./index.js"
+  },
   "scripts": {
     "test": "node test.js",
     "api": "node ./generate-api/index.js",
