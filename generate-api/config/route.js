@@ -1,7 +1,7 @@
 var { doCapital } = require("../../util");
 const routeTemplate = ({ apiname }) => {
   const pathurl = `/${apiname}s`;
-  const pathid = `/${apiname}s:/id`;
+  const pathid = `/${apiname}s/:id`;
   const data = {
     routes: [
       {
