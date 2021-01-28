@@ -16,11 +16,11 @@ const createApi = async ({ apiname, prop, url }) => {
   await fs.mkdirSync(`api/${apiname}/controller`, { recursive: true });
   await fs.mkdirSync(`api/${apiname}/models`, { recursive: true });
   await fs.mkdirSync(`api/${apiname}/routes`, { recursive: true });
-  
+
   await fs.mkdirSync(`connection`, { recursive: true });
   const connectTemp = connectiontemplate();
   const serverTemp = serverTemplate(url);
-  const routeTemp = routeTemplate({apiname})
+  const routeTemp = routeTemplate({ apiname });
   const controllerTemp = controllerTemplate({
     apiname,
     prop: Object.keys(prop),
@@ -31,11 +31,19 @@ const createApi = async ({ apiname, prop, url }) => {
     prop: prop,
   });
   await fs.writeFileSync("server.js", serverTemp);
+  await fs.writeFileSync(".env",`
+  PORT= 5000
+  URL = ${url}
+  `);
   await fs.writeFileSync(`api/${apiname}/controller/index.js`, controllerTemp);
   await fs.writeFileSync(`api/${apiname}/models/${apiname}.js`, modelTemp);
-  await fs.writeFileSync(`api/${apiname}/routes/index.json`, JSON.stringify(routeTemp));
+  await fs.writeFileSync(
+    `api/${apiname}/routes/index.json`,
+    JSON.stringify(routeTemp)
+  );
   await fs.writeFileSync(`connection/connection.js`, connectTemp);
 
   await console.log(`You created api: ${apiname}`);
 };
-module.exports = createApi;
+
+module.exports = { createApi };

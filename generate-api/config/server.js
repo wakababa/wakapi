@@ -9,6 +9,7 @@ const serverTemplate = (url) => {
     var express = require("express");
     var helmet = require("helmet");
     var mongoose = require("mongoose");
+    require('dotenv').config()
     var bodyParser = require("body-parser");
     var cors = require("cors");
     var connectDb = require("./connection/connection");
@@ -16,14 +17,15 @@ const serverTemplate = (url) => {
     var jsonParser = bodyParser.json();
     var createApi = require("wakapi/generate-api/index");
     var fs = require('fs')
-
+    const URL = process.env.URL
     ${data
       .map((item) => `var ${item} = require("./api/${item}/controller/index");`)
       .join("\n")}
     var { doPlural, deletefromArray } = require("wakapi/util");
     connectDb({
-    url: ${urls},
+    url: URL,
     });
+    const PORT = process.env.PORT || 8000;
     app.use(helmet());
     app.use(cors());
     
@@ -62,7 +64,7 @@ const serverTemplate = (url) => {
     ${data
       .map((item) => ` app.use("/${item}s", jsonParser, ${item});`)
       .join("\n")}
-    app.listen(5000);
+      app.listen(PORT, console.log("Server started at :" + PORT));
         `;
 };
 
