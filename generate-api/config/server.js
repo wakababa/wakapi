@@ -1,13 +1,13 @@
-var fs = require('fs')
+var fs = require("fs");
 const serverTemplate = (url) => {
-   
- const result = fs.readFileSync('config.json','utf-8',(res)=>{
-      return res
-   })
-   const data = JSON.parse(result)
-   let urls = JSON.stringify(url)
+  const result = fs.readFileSync("config.json", "utf-8", (res) => {
+    return res;
+  });
+  const data = JSON.parse(result);
+  let urls = JSON.stringify(url);
   return `
     var express = require("express");
+    var helmet = require("helmet");
     var mongoose = require("mongoose");
     var bodyParser = require("body-parser");
     var cors = require("cors");
@@ -17,16 +17,16 @@ const serverTemplate = (url) => {
     var createApi = require("wakapi/generate-api/index");
     var fs = require('fs')
 
-    ${
-        data.map(item=>(
-            `var ${item} = require("./api/${item}/controller/index");`
-        )).join('\n')
-    }
+    ${data
+      .map((item) => `var ${item} = require("./api/${item}/controller/index");`)
+      .join("\n")}
     var { doPlural, deletefromArray } = require("wakapi/util");
     connectDb({
     url: ${urls},
     });
+    app.use(helmet());
     app.use(cors());
+    
     app.get("/apinames", (req, res) => {
     mongoose.connection.db.listCollections().toArray((err, names) => {
         res.send(names.map((item) => item.name));
@@ -59,11 +59,9 @@ const serverTemplate = (url) => {
       });
    
       
-    ${
-         data.map(item=>(
-            ` app.use("/${item}s", jsonParser, ${item});`
-        )).join('\n')
-    }
+    ${data
+      .map((item) => ` app.use("/${item}s", jsonParser, ${item});`)
+      .join("\n")}
     app.listen(5000);
         `;
 };
