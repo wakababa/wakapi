@@ -6,7 +6,7 @@
 
 `npm install wakapi --save`
 
-```
+```javascript
 createApi({
     apiname:"user",
     prop:{
@@ -17,5 +17,4 @@ createApi({
          })
 ```
 
-When you create this function you will create api file inside you will have Model / Controller  /  Route.
-
+When you create this function you will create api file inside you will have Model / Controller / Route.
