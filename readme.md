@@ -6,15 +6,6 @@
 
 `npm install wakapi --save`
 
-```javascript
-createApi({
-    apiname:"user",
-    prop:{
-        name:"String",
-        age:"Number"
-         },
-    url:"mongodb+srv://waka:waka@cluster0.jtleo.mongodb.net/test1"
-         })
-```
+`npx wakapi --save`
 
-When you create this function you will create api file inside you will have Model / Controller / Route.
+You can easly create your api without any problem.Can change everything in code nothing to hid from you !
