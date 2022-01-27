@@ -15,7 +15,7 @@ You can easly create your api without any problem.Can change everything in code 
 const {createApi} = require("./generate-api/index");
 createApi({
     apiname: "feed1",
-    url: "mongodb+srv://waka:waka@cluster0.jtleo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    url: "mongodb+srv://<username>:<password>@cluster0.jtleo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     prop: {
      title:"string"
     }
