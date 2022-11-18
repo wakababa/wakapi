@@ -8,13 +8,7 @@ const controllerTemplate = ({ apiname, prop }) => {
 
      router.get("/", async(req, res) => {
 
-      await  ${apiname}Modal.find({},(err,data)=>{
-            if(err){
-                res.send(err)
-            }else{
-                res.send(data)
-            }
-        })
+      res.send(await  ${apiname}Modal.find())
 });
 router.get("/props", async(req, res) => {
    const data = [${prop.map((item) => JSON.stringify(item))}]

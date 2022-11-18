@@ -1,14 +1,13 @@
 {
   "name": "wakapi",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Api Creater",
   "main": "index.js",
   "bin": {
     "wakapi": "./index.js"
   },
   "scripts": {
-    "test":"deno run --allow-env --allow-read --allow-write test/index.js"
-
+    "test": "deno run --allow-env --allow-read --allow-write test/index.js"
   },
   "keywords": [],
   "author": "wakababa",
@@ -25,7 +24,8 @@
     "helmet": "^4.4.1",
     "inquirer": "^7.3.3",
     "mongoose": "^5.10.15",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "wakapi": "^2.0.3"
   },
   "devDependencies": {
     "eslint": "^7.18.0"

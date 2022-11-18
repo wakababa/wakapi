@@ -1,0 +1,12 @@
+{
+  "tables": {
+    "user": {
+      "name": "String",
+      "age": "Number"
+    },
+    "hero": {
+      "name": "String"
+    }
+  },
+  "mongoDbUrl": "mongodb+srv://waka:waka@cluster0.jtleo.mongodb.net/?retryWrites=true&w=majority"
+}
