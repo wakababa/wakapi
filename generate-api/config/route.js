@@ -1,4 +1,4 @@
-var { doCapital } = require("../../util");
+const { doCapital } = require("../../util");
 const routeTemplate = ({ apiname }) => {
   const pathurl = `/${apiname}s`;
   const pathid = `/${apiname}s/:id`;

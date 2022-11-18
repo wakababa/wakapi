@@ -1,6 +1,6 @@
-const connectiontemplate = () => {
+const dbConnectionTemplate = () => {
   return `
-    var mongoose = require("mongoose");
+    const mongoose = require("mongoose");
     const connectDb = async ({ url }) => {
     await mongoose.connect(
     url,
@@ -17,4 +17,4 @@ const connectiontemplate = () => {
     module.exports = connectDb;
     `;
 };
-module.exports =  connectiontemplate
+module.exports =  dbConnectionTemplate

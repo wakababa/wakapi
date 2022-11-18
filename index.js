@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-var { createApi } = require("./generate-api/index");
+const { createApi } = require("./generate-api/index");
 module.exports = {createApi};
 
-var inquirer = require('inquirer');
+const inquirer = require('inquirer');
 inquirer
     .prompt([
         {type:'input',message:'Api Name :' ,name:'apiname' },

@@ -1,11 +1,10 @@
-var fs = require("fs");
-var routeTemplate = require("./config/route");
-var controllerTemplate = require("./config/controller");
-var modelTemplate = require("./config/model");
-var serverTemplate = require("./config/server");
-var configTemplate = require("./config/config");
-var connectionTemplate = require("./config/connection");
-const connectiontemplate = require("./config/connection");
+const fs = require("fs");
+const routeTemplate = require("./config/route");
+const controllerTemplate = require("./config/controller");
+const modelTemplate = require("./config/model");
+const serverTemplate = require("./config/server");
+const configTemplate = require("./config/config");
+const dbConnectionTemplate = require("./config/connection");
 const createApi = async ({ apiname, prop, url }) => {
   if (fs.existsSync("config.json")) {
   } else {
@@ -18,7 +17,7 @@ const createApi = async ({ apiname, prop, url }) => {
   await fs.mkdirSync(`api/${apiname}/routes`, { recursive: true });
 
   await fs.mkdirSync(`connection`, { recursive: true });
-  const connectTemp = connectiontemplate();
+  const connectTemp = dbConnectionTemplate();
   const serverTemp = serverTemplate(url);
   const routeTemp = routeTemplate({ apiname });
   const controllerTemp = controllerTemplate({

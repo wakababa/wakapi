@@ -15,14 +15,14 @@ const doPlural = (value,capital) => {
      return  doCapital(value) + "s"
   }
 };
-var fs = require('fs')
+const fs = require('fs')
 
 const deletefromArray = async(name)=>{
   const readFile = await fs.readFileSync('config.json','utf-8',(res)=>{
       return res
     })
     const parsed = JSON.parse(readFile)
-      
+
       const data = [...parsed.filter(item=>item !== name)]
       const result  = JSON.stringify(data)
      console.log(result)

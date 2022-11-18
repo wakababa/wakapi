@@ -1,14 +1,14 @@
 const controllerTemplate = ({ apiname, prop }) => {
   return`
-     var express = require('express')
+     const express = require('express')
      const router = express.Router();
-     const dbmodel = require("../models/${apiname}");
+     const ${apiname}Modal = require("../models/${apiname}");
 
      // api name ${apiname} 
 
      router.get("/", async(req, res) => {
 
-      await  dbmodel.find({},(err,data)=>{
+      await  ${apiname}Modal.find({},(err,data)=>{
             if(err){
                 res.send(err)
             }else{
@@ -23,7 +23,7 @@ router.get("/props", async(req, res) => {
 
 router.post("/", async (req, res) => {
     const {${prop.map((item) => item)}} = req.body
-      const post1 = new dbmodel({${prop.map((item) => item)}});
+      const post1 = new ${apiname}Modal({${prop.map((item) => item)}});
    await   post1.save((err,data)=>{
           if(err){
               res.send(err)
@@ -34,37 +34,18 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/:id",async(req,res)=>{
-   await dbmodel.findById(req.params.id, (err, data) => {
-        if (err) {
-          res.send("This id not exist !");
-        } else {
-          res.json(data);
-        }
-      });
+     res.send(await ${apiname}Modal.findById(req.params.id))
 })
 router.put("/:id",async (req,res)=>{
-    await  dbmodel.findByIdAndUpdate(
-          { _id: req.params.id },
-          req.body,
-          { new: true, useFindAndModify: false },
-          (err, data) => {
-            if (err) {
-              res.send(err);
-            } else {
-              res.json(data);
-            }
-          }
-        );
+     res.send(await  ${apiname}Modal.findByIdAndUpdate(
+        { _id: req.params.id },
+        req.body,
+        { new: true, useFindAndModify: false }
+    ))
   })
 
   router.delete("/:id",async(req,res)=>{
-    dbmodel.findByIdAndDelete({ _id: req.params.id }, (err, data) => {
-        if (err) {
-          res.send(err);
-        } else {
-          res.json(data);
-        }
-      });
+     res.send(await ${apiname}Modal.findByIdAndDelete({ _id: req.params.id }))
 })
 
 

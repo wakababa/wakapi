@@ -1,4 +1,4 @@
-var fs = require("fs");
+const fs = require("fs");
 const serverTemplate = (url) => {
   const result = fs.readFileSync("config.json", "utf-8", (res) => {
     return res;
@@ -6,22 +6,22 @@ const serverTemplate = (url) => {
   const data = JSON.parse(result);
   let urls = JSON.stringify(url);
   return `
-    var express = require("express");
-    var helmet = require("helmet");
-    var mongoose = require("mongoose");
+    const express = require("express");
+    const helmet = require("helmet");
+    const mongoose = require("mongoose");
     require('dotenv').config()
-    var bodyParser = require("body-parser");
-    var cors = require("cors");
-    var connectDb = require("./connection/connection");
+    const bodyParser = require("body-parser");
+    const cors = require("cors");
+    const connectDb = require("./connection/connection");
     const app = express();
-    var jsonParser = bodyParser.json();
-    var createApi = require("wakapi/generate-api/index");
-    var fs = require('fs')
+    const jsonParser = bodyParser.json();
+    const createApi = require("wakapi/generate-api/index");
+    const fs = require('fs')
     const URL = process.env.URL
     ${data
-      .map((item) => `var ${item} = require("./api/${item}/controller/index");`)
+      .map((item) => `const ${item} = require("./api/${item}/controller/index");`)
       .join("\n")}
-    var { doPlural, deletefromArray } = require("wakapi/util");
+    const { doPlural, deletefromArray } = require("wakapi/util");
     connectDb({
     url: URL,
     });
@@ -54,7 +54,7 @@ const serverTemplate = (url) => {
         await deletefromArray(name);
         const path = 'api/'+ name;
         await fs.rmdirSync(path, { recursive: true });
-        var  serverTemplate = require('./generate-api/config/server')
+        const  serverTemplate = require('./generate-api/config/server')
         const serverTemp = serverTemplate();
         await fs.writeFileSync("server.js", serverTemp)
         res.send("Deleted")
