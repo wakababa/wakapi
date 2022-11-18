@@ -1,4 +1,4 @@
-var fs = require("npm:fs");
+var fs = require("fs");
 const serverTemplate = (url) => {
   const result = fs.readFileSync("config.json", "utf-8", (res) => {
     return res;

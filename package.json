@@ -1,6 +1,6 @@
 {
   "name": "wakapi",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Api Creater",
   "main": "index.js",
   "bin": {

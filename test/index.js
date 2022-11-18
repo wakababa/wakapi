@@ -1,4 +1,4 @@
-import { createApi } from "npm:wakapi";
+import { createApi } from "wakapi";
 createApi({
   apiname:"user",
   url:"mongodb+srv://waka:waka@cluster0.jtleo.mongodb.net/?retryWrites=true&w=majority",

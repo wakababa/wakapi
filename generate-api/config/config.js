@@ -1,4 +1,4 @@
-const fs = require('npm:fs')
+const fs = require('fs')
 const configTemplate = async({ name }) => {
 
     const readFile = await fs.readFileSync('config.json','utf-8',(res)=>{
@@ -11,11 +11,11 @@ const configTemplate = async({ name }) => {
     }else{
       const data = [...parsed,name]
       const result  = JSON.stringify(data)
-     
+
       await fs.writeFileSync('config.json',result)
     }
-  
-  
+
+
   };
 
   module.exports = configTemplate
