@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-var { createApi } = require("./generate-api/index");
-module.exports = {createApi};
+import { createApi } from "npm:wakapi";
+import  prompt from 'npm:inquirer';
 
-var inquirer = require('inquirer');
-inquirer
-  .prompt([
+prompt([
    {type:'input',message:'Api Name :' ,name:'apiname' },
    {type:'input',message:'Url :' ,name:'url' },
    {type:'input',message:'Add Database :' ,name:'prop' },

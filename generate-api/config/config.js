@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('npm:fs')
 const configTemplate = async({ name }) => {
 
     const readFile = await fs.readFileSync('config.json','utf-8',(res)=>{
