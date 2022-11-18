@@ -1,4 +1,4 @@
-var fs = require("fs");
+var fs = require("npm:fs");
 var routeTemplate = require("./config/route");
 var controllerTemplate = require("./config/controller");
 var modelTemplate = require("./config/model");
